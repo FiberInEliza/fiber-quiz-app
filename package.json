@@ -23,6 +23,7 @@
     "@elizaos/plugin-node": "0.1.7",
     "@elizaos/plugin-solana": "0.1.7",
     "@elizaos/plugin-starknet": "0.1.7",
+    "@elizaos/plugin-ckb-fiber": "file:./packages/plugin-ckb-fiber",
     "@tavily/core": "0.0.2",
     "amqplib": "0.10.5",
     "better-sqlite3": "11.5.0",

@@ -4,11 +4,12 @@ import {
   elizaLogger,
   settings,
   stringToUuid,
-  type Character,
+  type Character, Memory,
 } from "@elizaos/core";
 import { bootstrapPlugin } from "@elizaos/plugin-bootstrap";
 import { createNodePlugin } from "@elizaos/plugin-node";
 import { solanaPlugin } from "@elizaos/plugin-solana";
+import { ckbFiberPlugin } from "@elizaos/plugin-ckb-fiber";
 import fs from "fs";
 import net from "net";
 import path from "path";
@@ -58,6 +59,7 @@ export function createAgent(
     plugins: [
       bootstrapPlugin,
       nodePlugin,
+      ckbFiberPlugin,
       character.settings?.secrets?.WALLET_PUBLIC_KEY ? solanaPlugin : null,
     ].filter(Boolean),
     providers: [],
@@ -90,6 +92,22 @@ async function startAgent(character: Character, directClient: DirectClient) {
     await runtime.initialize();
 
     runtime.clients = await initializeClients(character, runtime);
+
+    const memory: Memory = {
+      id: stringToUuid(
+          Date.now() + "-" + runtime.agentId
+      ),
+      userId: runtime.agentId,
+      agentId: runtime.agentId,
+      content: {
+        text: "SSend me 60 USDI, my invoice is: fibt600000001pp8msdlfq6gqzg7dwfhddw3x46u2xydkgzm2e37kp6dr75yakkemrxjm67xjucccgj7hz46reg9m90gvax25pgfcrerysr67fesg34zzsu895nns8g78ua6x23f3w9xjyfzwht9grq5aa2vwaz0gaaxme6dqxfypk3g02753fc0a6e4e4jx7r982qv282mutcw8zzrx3y992av365sfv2pgpschnwn5wv3lglel8x96adqemcsp9j0l2rfue2rvp9yj60320wdewqj8aln2c3dh04s30nxg0hn0vufhdj8gkcvt5h4h8gfr02k8x6rnyulnlqgt5gqzmhkchn6tcqtgk0zkglgrl0wg8ede99gv204rgsqqjge9mq07u23f7vxfcdzpm57rt72359vp0yad9pkl5ttae44vxd5rzq09m2w8rc0ydryljywvgqj2gq0d",
+        action: "SEND_PAYMENT",
+      },
+      roomId: runtime.agentId,
+      embedding: getEmbeddingZeroVector(),
+      createdAt: Date.now(),
+    };
+    runtime.processActions(memory, [], state, callback)
 
     directClient.registerAgent(runtime);
 

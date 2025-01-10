@@ -1,0 +1,26 @@
+{
+    "name": "@elizaos/plugin-ckb-fiber",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "type": "module",
+    "types": "dist/index.d.ts",
+    "dependencies": {
+        "@elizaos/core": "0.1.7",
+        "@ckb-ccc/core": "^0.1.0-alpha.4"
+    },
+    "devDependencies": {
+        "tsup": "8.3.5",
+        "axios": "1.7.8",
+        "zod": "3.23.8",
+        "@types/node": "^20.0.0",
+        "@vitest/coverage-v8": "^0.34.6",
+        "vitest": "^0.34.6"
+    },
+    "scripts": {
+        "build": "tsup --format esm --dts",
+        "dev": "tsup --format esm --dts --watch",
+        "lint": "eslint --fix  --cache plugin",
+
+        "test": "vitest"
+    }
+}

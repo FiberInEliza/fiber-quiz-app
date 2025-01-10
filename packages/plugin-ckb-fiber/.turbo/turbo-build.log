@@ -1,0 +1,18 @@
+
+
+> @elizaos/plugin-ckb-fiber@0.1.5-alpha.5 build /Users/ja/Desktop/Exermon/ContriX/CKB-Project/eliza-fiber-plugin/eliza/packages/plugin-ckb-fiber
+> tsup --format esm --dts
+
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.3.5
+[34mCLI[39m Using tsup config: /Users/ja/Desktop/Exermon/ContriX/CKB-Project/eliza-fiber-plugin/eliza/packages/plugin-ckb-fiber/tsup.config.ts
+[34mCLI[39m Target: esnext
+[34mCLI[39m Cleaning output folder
+[34mESM[39m Build start
+[32mESM[39m [1mdist/index.js     [22m[32m279.70 KB[39m
+[32mESM[39m [1mdist/index.js.map [22m[32m568.38 KB[39m
+[32mESM[39m ⚡️ Build success in 64ms
+DTS Build start
+DTS ⚡️ Build success in 1808ms
+DTS dist/index.d.ts 2.47 KB
